@@ -1,6 +1,8 @@
-enlever(X,[X|Q],Q).
-enlever(X,[Y|Q],[Y|Q1]):-enlever(X,Q,Q1).
+remove_head(X, [X|Q], Q).
+remove_head(X, [Y|Q], [Y|Q1]) :-
+	remove_head(X, Q, Q1).
 
-permut([],[]).
-permut(L,[X|Q1]) :-
-	enlever(X,L,Q),permut(Q,Q1).
+par([], []).
+par(L, [X|Q1]) :-
+	remove_head(X, L, Q),
+	par(Q,Q1).

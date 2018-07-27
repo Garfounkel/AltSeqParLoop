@@ -1,4 +1,7 @@
+seq([], []) :- !.
 seq([H|T], X) :-
-  append(H, X, Y),
-  seq(T, Y).
-seq([], _).
+  !,
+  seq(H, NewH),
+  seq(T, NewT),
+  append(NewH, NewT, X).
+seq(H, [H]).
